@@ -1,0 +1,13 @@
+# IDEA
+.idea/workspace.xml
+target/
+
+# Gradle
+.gradle
+build/
+
+# Eclipse
+bin/
+.classpath
+.project
+.settings/

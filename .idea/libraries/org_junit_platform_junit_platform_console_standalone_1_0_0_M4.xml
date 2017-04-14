@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.junit.platform:junit-platform-console-standalone:1.0.0-M4" type="repository">
+    <properties maven-id="org.junit.platform:junit-platform-console-standalone:1.0.0-M4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-console-standalone/1.0.0-M4/junit-platform-console-standalone-1.0.0-M4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

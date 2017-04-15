@@ -12,6 +12,6 @@ set("packager.moduleMetadata", list(
   "integration@1.0-SNAPSHOT/integration.ConsoleLauncherIntegration"
 ))
 
-run("resolver", "modulefixer", "compiler", "packager", "runner")
+run("resolver", "modulefixer", "compiler", "packager") // , "runner")
 
 /exit

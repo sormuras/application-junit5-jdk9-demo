@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/src/test/java/application.api">
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java/application.api" isTestSource="true" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="application.api" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="org.junit.platform:junit-platform-console-standalone:1.0.0-M4" level="project" />
+  </component>
+</module>

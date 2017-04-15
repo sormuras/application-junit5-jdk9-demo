@@ -10,12 +10,15 @@ addons:
 jdk: oraclejdk9
 
 install:
+#
+# Download pro master and build it
+#
 - wget --no-check-certificate https://github.com/forax/pro/archive/master.zip
-- unzip pro-master.zip
+- unzip master.zip
 - cd pro-master
 - chmod u+x build.sh
 - ./build.sh
 - cd ..
 
 script:
-- ./pro/bin/pro
+- ./pro-master/target/pro/bin/pro

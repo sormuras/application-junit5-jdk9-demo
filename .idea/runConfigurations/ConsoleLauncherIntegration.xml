@@ -8,7 +8,7 @@
     </extension>
     <option name="MAIN_CLASS_NAME" value="integration.ConsoleLauncherIntegration" />
     <option name="VM_PARAMETERS" value="" />
-    <option name="PROGRAM_PARAMETERS" value="--include-engine &quot;junit-jupiter&quot; --classpath &quot;target/idea/production/application.api&quot; --classpath &quot;target/idea/production/integration&quot; --scan-classpath" />
+    <option name="PROGRAM_PARAMETERS" value="--scan-classpath --classpath &quot;target/idea/production/application.api&quot; --classpath &quot;target/idea/production/integration&quot;" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
     <option name="ALTERNATIVE_JRE_PATH" />

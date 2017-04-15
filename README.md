@@ -33,17 +33,20 @@ module integration {
 }
 ```
 
+
+### `application.api-tests`
+
 There's also a simple IDEA module **without** a module descriptor:
 
 - `application.api-tests`
 
-It contains the (unit) tests in a legacy-way-compatible manner:
+It contains the (unit) tests in an old-fashioned but useful manner:
 
 - no `module-info.java`
 - just an IDEA-style `test` source folder with a *test scope* dependency to
   `application.api`
-- adds `junit-platform-console-standalone-1.0.0-M4.jar` to module path, which
-  is automatically transformed into module `junit.platform.console.standalone`
+- adds `junit-platform-console-standalone-1.0.0-M4.jar` to the module path, which
+  is automatically transformed into the `junit.platform.console.standalone` module
 - tests are defined in same packages as their tested classes: don't fear the
   split, package!
 - duplicates the service provision information from `application.api` by using
@@ -53,7 +56,7 @@ It contains the (unit) tests in a legacy-way-compatible manner:
 
 https://github.com/sormuras/application-junit5-jdk9-demo/tree/master/.idea/runConfigurations
 
-### run ApplicationMain
+### run ApplicationMain.xml
 ```
 jdk-9/bin/java
 
@@ -67,7 +70,7 @@ ApplicationPlugin: class foo.bar.internal.Reverse
 'abc' -> [Reverse] -> 'cba'
 ```
 
-### run IntegrationMain
+### run IntegrationMain.xml
 ```
 jdk-9/bin/java
 
@@ -86,7 +89,7 @@ ApplicationPlugin: class integration.Uppercase
 'abc' -> [Uppercase] -> 'ABC'
 ```
 
-### run ConsoleLauncherIntegration
+### run ConsoleLauncherIntegration.xml
 ```
 jdk-9/bin/java
 

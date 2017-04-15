@@ -1,6 +1,6 @@
-# junit5-idea-java9-consumer
+# application-junit5-jdk9-demo
 
-The `junit5-idea-java9-consumer` project demonstrates how to run tests based on
+The `application-junit5-jdk9-demo` project demonstrates how to run tests based on
 JUnit Platform standalone distribution using IDEA in the a modular environment.
 
 This sample project does not aim to demonstrate how to use the JUnit Jupiter APIs.
@@ -12,35 +12,44 @@ please consult the [User Guide](http://junit.org/junit5/docs/current/user-guide/
 
 ![](readme-junit5-idea-java9-project-tree-overview.png)
 
-This project hosts 2 (two) Java/IDEA modules **with** module descriptors:
+This project hosts 2 (two) Java modules **with** module descriptors.
 
-- `application.api` with the following `module-info.java`:
+### module `application.api`
+
 ```java
 module application.api {
+
   exports foo.bar.api;
+
   uses foo.bar.api.ApplicationPlugin;
-  provides foo.bar.api.ApplicationPlugin with foo.bar.internal.Reverse;
+
+  provides foo.bar.api.ApplicationPlugin
+    with foo.bar.internal.Reverse;
+
 }
 ```
 
-- `integration` with the following `module-info.java`:
+### module `integration`
+
 ```java
 module integration {
+
   requires application.api;
   requires junit.platform.console.standalone;
-  opens integration to junit.platform.console.standalone;
-  provides foo.bar.api.ApplicationPlugin with integration.Uppercase;
+
+  opens integration
+    to junit.platform.console.standalone;
+
+  provides foo.bar.api.ApplicationPlugin
+    with integration.Uppercase;
+
 }
 ```
-
 
 ### `application.api-tests`
 
-There's also a simple IDEA module **without** a module descriptor:
-
-- `application.api-tests`
-
-It contains the (unit) tests in an old-fashioned but useful manner:
+There's also a simple IDEA module **without** a module descriptor. It contains
+the (unit) tests in an old-fashioned but useful manner:
 
 - no `module-info.java`
 - just an IDEA-style `test` source folder with a *test scope* dependency to

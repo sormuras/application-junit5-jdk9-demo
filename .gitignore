@@ -1,6 +1,11 @@
+# Common
+target/
+
 # IDEA
 .idea/workspace.xml
-target/
+
+# pro - https://github.com/forax/pro
+deps/
 
 # Gradle
 .gradle

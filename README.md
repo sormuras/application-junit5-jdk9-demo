@@ -10,16 +10,76 @@ please consult the [User Guide](http://junit.org/junit5/docs/current/user-guide/
 
 ## overview
 
-Project | Description
---------|------------
-![](readme-junit5-idea-java9-project-tree-overview.png) | This project hosts 2 (two) **Java modules**:
- |
- | - `application.api`
- | - `integration`
- |
- | and a single **IDEA module** without a `module-info.java` file:
- |
- | - `application.api-tests`
+![](readme-junit5-idea-java9-project-tree-overview.png)
+
+This project hosts 2 (two) **Java modules**:
+
+- `application.api`
+- `integration`
+
+and a single **IDEA module** without a `module-info.java` file:
+
+- `application.api-tests`
+
+## shared run configurations
+
+### run ApplicationMain
+```
+jdk-9/bin/java
+
+ -p [...]/target/idea/production/application.api
+
+ -m application.api/foo.bar.api.ApplicationMain
+
+ApplicationVersion 9.123
+ApplicationPlugin: class foo.bar.internal.Reverse
+'123' -> [Reverse] -> '321'
+'abc' -> [Reverse] -> 'cba'
+```
+
+### run IntegrationMain
+```
+jdk-9/bin/java
+
+ -p [...]/target/idea/production/integration
+    [...]/target/idea/production/application.api
+    [~m2]/junit-platform-console-standalone-1.0.0-M4.jar
+
+ -m application.api/foo.bar.api.ApplicationMain
+
+ApplicationVersion 9.123
+ApplicationPlugin: class foo.bar.internal.Reverse
+'123' -> [Reverse] -> '321'
+'abc' -> [Reverse] -> 'cba'
+ApplicationPlugin: class integration.Uppercase
+'123' -> [Uppercase] -> '123'
+'abc' -> [Uppercase] -> 'ABC'
+```
+
+### run ConsoleLauncherIntegration
+```
+jdk-9/bin/java
+
+ -p [...]/target/idea/production/integration
+    [...]/target/idea/production/application.api
+    [~m2]/junit-platform-console-standalone-1.0.0-M4.jar
+
+ -m integration/integration.ConsoleLauncherIntegration
+
+ --scan-classpath
+ --classpath target/idea/production/application.api
+ --classpath target/idea/production/integration
+
+╷
+├─ JUnit Jupiter ✔
+│  └─ IntegrationTests ✔
+│     ├─ versionIsAccessible() ✔
+│     ├─ loadedPluginListIsNotEmpty() ✔
+│     └─ loadedPluginListToStringMatches() ✔
+└─ JUnit Vintage ✔
+   └─ integration.LegacyTest ✔
+      └─ testApplicationMain ✔
+```
 
 
 ## known issues

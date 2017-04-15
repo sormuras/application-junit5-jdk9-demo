@@ -12,16 +12,46 @@ please consult the [User Guide](http://junit.org/junit5/docs/current/user-guide/
 
 ![](readme-junit5-idea-java9-project-tree-overview.png)
 
-This project hosts 2 (two) **Java modules**:
+This project hosts 2 (two) Java/IDEA modules **with** module descriptors:
 
-- `application.api`
-- `integration`
+- `application.api` with the following `module-info.java`:
+```java
+module application.api {
+  exports foo.bar.api;
+  uses foo.bar.api.ApplicationPlugin;
+  provides foo.bar.api.ApplicationPlugin with foo.bar.internal.Reverse;
+}
+```
 
-and a single **IDEA module** without a `module-info.java` file:
+- `integration` with the following `module-info.java`:
+```java
+module integration {
+  requires application.api;
+  requires junit.platform.console.standalone;
+  opens integration to junit.platform.console.standalone;
+  provides foo.bar.api.ApplicationPlugin with integration.Uppercase;
+}
+```
+
+There's also a simple IDEA module **without** a module descriptor:
 
 - `application.api-tests`
 
+It contains the (unit) tests in a legacy-way-compatible manner:
+
+- no `module-info.java`
+- just an IDEA-style `test` source folder with a *test scope* dependency to
+  `application.api`
+- adds `junit-platform-console-standalone-1.0.0-M4.jar` to module path, which
+  is automatically transformed into module `junit.platform.console.standalone`
+- tests are defined in same packages as their tested classes: don't fear the
+  split, package!
+- duplicates the service provision information from `application.api` by using
+  an entry in `META-INF/services` folder
+
 ## shared run configurations
+
+https://github.com/sormuras/application-junit5-jdk9-demo/tree/master/.idea/runConfigurations
 
 ### run ApplicationMain
 ```
@@ -70,21 +100,14 @@ jdk-9/bin/java
  --classpath target/idea/production/application.api
  --classpath target/idea/production/integration
 
-╷
-├─ JUnit Jupiter ✔
-│  └─ IntegrationTests ✔
-│     ├─ versionIsAccessible() ✔
-│     ├─ loadedPluginListIsNotEmpty() ✔
-│     └─ loadedPluginListToStringMatches() ✔
-└─ JUnit Vintage ✔
-   └─ integration.LegacyTest ✔
-      └─ testApplicationMain ✔
 ```
-
+![](readme-junit5-idea-java9-consolelauncher-integration.png)
 
 ## known issues
 
 - When launching *Run 'All Test'* in `integration` service loading does not work.
+- The single IDEA module `application.api-tests` can be configured as a part of
+  `application.api` excluding `module-info.java` from compilation. I guess.
 - Instead of using `--scan-classpath --classpath ... --classpath ...` command
   line options, the JUnit Platform ConsoleLauncher should support something like:
   `--scan-modulepath`

@@ -9,4 +9,5 @@ install:
 - ./pro/bin/pro version
 
 script:
-- ./pro/bin/pro
+- ./pro/bin/pro build build.pro
+- ./pro/bin/pro build build-api-tests.pro

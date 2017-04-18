@@ -4,8 +4,12 @@ import static com.github.forax.pro.Pro.*;
 
 set("pro.loglevel", "verbose")
 
+set("resolver.remoteRepositories", list(
+  uri("https://oss.sonatype.org/content/repositories/snapshots")
+))
+
 set("resolver.dependencies", list(
-  "junit.platform.console.standalone=org.junit.platform:junit-platform-console-standalone:1.0.0-M4"
+  "junit.platform.console.standalone=org.junit.platform:junit-platform-console-standalone:1.0.0-SNAPSHOT"
 ))
 
 set("packager.moduleMetadata", list(

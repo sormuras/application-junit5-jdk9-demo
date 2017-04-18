@@ -1,8 +1,6 @@
-System.out.println("Java runtime: " + Runtime.version())
-
 import static com.github.forax.pro.Pro.*;
 
-set("pro.loglevel", "verbose")
+set("pro.loglevel", "info")
 
 set("resolver.remoteRepositories", list(
   uri("https://oss.sonatype.org/content/repositories/snapshots")

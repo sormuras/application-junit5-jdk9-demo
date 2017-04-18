@@ -10,4 +10,4 @@ install:
 
 script:
 - ./pro/bin/pro build build.pro
-- ./pro/bin/pro build build-api-tests.pro
+- ./pro/bin/pro build tests.pro

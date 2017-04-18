@@ -24,6 +24,7 @@ set("runner.mainArguments", list(
   // class foo.bar.internal.ReverseTests (in unnamed module @0x5aa9e4eb)
   //   cannot access class foo.bar.internal.Reverse (in module application.api)
   //   because module application.api does not export foo.bar.internal to unnamed module @0x5aa9e4eb
+  // legacy classpath test execution is moved to "tests.pro"
 ))
 
 run("resolver", "modulefixer", "compiler", "packager", "runner")

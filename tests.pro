@@ -1,8 +1,8 @@
 System.out.println("java runtime: " + Runtime.version())
 
-#
-# Why does /env _restart_ the entire "tests.pro" file?
-#
+//
+// Why does /env _restart_ the entire "tests.pro" file?
+//
 
 /env -class-path deps/junit.platform.console.standalone.jar
 

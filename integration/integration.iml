@@ -8,6 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="application.api" />
-    <orderEntry type="library" name="org.junit.platform:junit-platform-console-standalone:1.0.0-M4" level="project" />
+    <orderEntry type="library" name="org.junit.platform:junit-platform-console-standalone:1.0.0" level="project" />
   </component>
 </module>
